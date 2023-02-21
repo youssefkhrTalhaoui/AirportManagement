@@ -8,8 +8,9 @@ namespace AM.ApplicationCore.Domain
 {
     public class Flight
     {
+        public string? AirlineLogo { get; set; }
         public string Destination { get; set; }
-        public string Departure { get; set; }
+        public string? Departure { get; set; }
         public DateTime FlightDate { get; set; }
         public int FlightId { get; set; }
         public DateTime EffectiveArrival { get; set; }

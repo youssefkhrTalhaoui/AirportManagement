@@ -8,7 +8,8 @@ namespace AM.ApplicationCore.Domain
 {
     public class Passenger
     {
-        public DateOnly BirthDate { get; set; }
+        public int Id { get; set; }
+        public DateTime BirthDate { get; set; }
         public int PassportNumber { get; set; }
         public string EmailAddress { get; set; }
         public string FirstName { get; set; }

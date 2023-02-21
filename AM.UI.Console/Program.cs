@@ -2,6 +2,7 @@
 //Console.WriteLine("Hello, World!");
 using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Services;
+using AM.Infrastructure;
 using System.Numerics;
 
 /*Plane p1= new Plane();
@@ -43,6 +44,9 @@ Staff staff1 = new Staff
 Console.WriteLine("Staff1: ");
 staff1.PassengerType();
 */
+AMContext ctx = new AMContext();
+ctx.Flights.Add(TestData.flight1);
+ctx.SaveChanges();
 ServiceFlight sf = new ServiceFlight();
 sf.Flights = TestData.listFlights;
 foreach(var flight in sf.GetFlightDates("Paris"))
