@@ -63,12 +63,8 @@ foreach (var item in sf.OrderedDurationFlights())
 }
 foreach( var item in sf.SeniorTravellers(TestData.flight1)) { Console.WriteLine(item); }
 sf.DestinationGroupedFlights();
-Passenger passenger1 = new Passenger
-{
-    FirstName = "test",
-    LastName = "test1",
-    EmailAddress = "test@esprit.tn"
+Passenger passenger1 = new Passenger { FullName = new FullName { FirstName = "test", LastName = "test1" }, EmailAddress = "test@esprit.tn"
 };
-Console.WriteLine(passenger1.FirstName + passenger1.LastName);
+Console.WriteLine(passenger1.FullName.FirstName + passenger1.FullName.LastName);
 passenger1.UpperFullName();
-Console.WriteLine(passenger1.FirstName + passenger1.LastName);
+Console.WriteLine(passenger1.FullName.FirstName + passenger1.FullName.LastName);

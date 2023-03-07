@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +9,23 @@ namespace AM.ApplicationCore.Domain
 {
     public class Passenger
     {
-        public int Id { get; set; }
+        [Display(Name ="Date of birth")]
+        [DataType(DataType.DateTime)]
         public DateTime BirthDate { get; set; }
-        public int PassportNumber { get; set; }
+        [Key, StringLength(7)]
+        
+        public string PassportNumber { get; set; }
+        [EmailAddress]
+         //[DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public FullName FullName { get; set; }    
+        [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Invalid Phone Number!")]
         public int TelNumber { get; set; }
         public ICollection<Flight> Flights { get; set; }
 
         public override string ToString()
         {
-            return "BirthDate :"+this.BirthDate+"PassportNumber :"+this.PassportNumber+"EmailAdresss :"+this.EmailAddress+"FirstName :"+this.FirstName+"LastName :"+this.LastName+"TelNumber :"+this.TelNumber;
+            return "BirthDate :"+this.BirthDate+"PassportNumber :"+this.PassportNumber+"EmailAdresss :"+this.EmailAddress+"FirstName :"+this.FullName.FirstName+"LastName :"+this.FullName.LastName + "TelNumber :"+this.TelNumber;
         }
         //la propriété et un attribut encapsulé avec les getters et setters....
 
@@ -37,11 +43,11 @@ namespace AM.ApplicationCore.Domain
         {
             if(email== null)
             {
-                return firstname == this.FirstName && lastname == this.LastName;
+                return firstname == this.FullName.FirstName && lastname == this.FullName.LastName;
             }
             else {
 
-                return firstname == this.FirstName && lastname == this.LastName && email == this.EmailAddress;
+                return firstname == this.FullName.FirstName && lastname == this.FullName.LastName && email == this.EmailAddress;
             }
             
         }
