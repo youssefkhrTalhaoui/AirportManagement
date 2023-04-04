@@ -21,7 +21,8 @@ namespace AM.ApplicationCore.Domain
         public FullName FullName { get; set; }    
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Invalid Phone Number!")]
         public int TelNumber { get; set; }
-        public ICollection<Flight> Flights { get; set; }
+        //public ICollection<Flight> Flights { get; set; }
+        public virtual ICollection<Ticket> Tickets{ get; set; }
 
         public override string ToString()
         {

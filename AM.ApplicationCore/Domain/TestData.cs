@@ -32,7 +32,7 @@ namespace AM.ApplicationCore.Domain
         public static Traveller traveller4 = new Traveller { FullName = new FullName { FirstName = "traveller4", LastName = "traveller4" }, EmailAddress = "traveller4.traveller4@gmail.com", BirthDate = new DateTime(1983, 01, 01), HealthInformation = "Some troubles", Nationality = "American" };
         public static Traveller traveller5 = new Traveller { FullName = new FullName { FirstName = "traveller5", LastName = "traveller5" }, EmailAddress = "traveller5.traveller5@gmail.com", BirthDate = new DateTime(1984, 01, 01), HealthInformation = "Some troubles", Nationality = "Spanish" }; // Flights
         // Affect all passengers to flight1
-        public static Flight flight1 = new Flight{ FlightDate = new DateTime(2022, 01, 01, 15, 10, 10),Destination = "Paris",EffectiveArrival = new DateTime(2022, 01, 01, 17, 10, 10), EstimatedDuration = 110,Passengers = new List<Passenger> { captain, hostess1, hostess2, traveller1, traveller2, traveller3, traveller4, traveller5 },Plane = Airbusplane};
+        //public static Flight flight1 = new Flight{ FlightDate = new DateTime(2022, 01, 01, 15, 10, 10),Destination = "Paris",EffectiveArrival = new DateTime(2022, 01, 01, 17, 10, 10), EstimatedDuration = 110,Passengers = new List<Passenger> { captain, hostess1, hostess2, traveller1, traveller2, traveller3, traveller4, traveller5 },Plane = Airbusplane};
         public static Flight flight2 = new Flight { FlightDate = new DateTime(2022, 02, 01, 21, 10, 10), Destination = "Paris", EffectiveArrival = new DateTime(2022, 02, 01, 23, 10, 10), EstimatedDuration = 105, Plane = BoingPlane };
         public static Flight flight3 = new Flight { FlightDate = new DateTime(2022, 02, 02, 5, 10, 10), Destination = "Paris", EffectiveArrival = new DateTime(2022, 03, 01, 6, 40, 10), EstimatedDuration = 100, Plane = BoingPlane };
         public static Flight flight4 = new Flight { FlightDate = new DateTime(2022, 04, 01, 6, 10, 10), Destination = "Madrid", EffectiveArrival = new DateTime(2022, 04, 01, 8, 10, 10), EstimatedDuration = 130, Plane = BoingPlane };
@@ -40,6 +40,6 @@ namespace AM.ApplicationCore.Domain
         public static Flight flight6 = new Flight { FlightDate = new DateTime(2022, 06, 01, 20, 10, 10), Destination = "Lisbonne", EffectiveArrival = new DateTime(2022, 06, 01, 22, 30, 10), EstimatedDuration = 200, Plane = Airbusplane };
 
         //test list
-        public static List<Flight> listFlights = new List<Flight> { flight1, flight2, flight3, flight4, flight5, flight6 };
+        public static List<Flight> listFlights = new List<Flight> { flight2, flight3, flight4, flight5, flight6 };
     }
 }

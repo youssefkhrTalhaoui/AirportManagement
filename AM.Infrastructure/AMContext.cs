@@ -15,12 +15,15 @@ namespace AM.Infrastructure
         public DbSet<Flight> Flights { get; set; }
         public DbSet<Plane> Planes { get; set; }
         public DbSet<Passenger> Passengers { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public DbSet<Staff> Staff { get; set; } 
+        public DbSet<Traveller> Travellers { get; set; }    
+      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
             Initial Catalog=YoussefTalhaouiDB;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseLazyLoadingProxies();
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -28,6 +31,9 @@ namespace AM.Infrastructure
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
             modelBuilder.ApplyConfiguration(new PassengerConfiguration());
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            modelBuilder.Entity<Staff>().ToTable("Staff");
+            modelBuilder.Entity<Traveller>().ToTable("Traveller");
         }
         protected override void ConfigureConventions(ModelConfigurationBuilder modelConfigurationBuilder)
         {

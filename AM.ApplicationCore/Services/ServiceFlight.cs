@@ -137,10 +137,10 @@ namespace AM.ApplicationCore.Services
         //}
         public IEnumerable<Traveller> SeniorTravellers(Flight flight)
         {
-            var queryLambda = flight.Passengers.OfType<Traveller>()
-                .OrderBy(p => p.BirthDate)
-                .Select(p => p);
-                return queryLambda.Take(3);
+        //    var queryLambda = flight.Passengers.OfType<Traveller>()
+        //        .OrderBy(p => p.BirthDate)
+        //        .Select(p => p);
+                return null;
 
         }
 

@@ -44,27 +44,36 @@ Staff staff1 = new Staff
 Console.WriteLine("Staff1: ");
 staff1.PassengerType();
 */
+//AMContext ctx = new AMContext();
+
+//ctx.Flights.Add(TestData.flight1);
+//ctx.SaveChanges();
+
+//ServiceFlight sf = new ServiceFlight();
+//sf.Flights = TestData.listFlights;
+//foreach(var flight in sf.GetFlightDates("Paris"))
+//{
+//    Console.WriteLine(flight);
+//}
+//sf.GetFlights("Destination", "Paris");
+//sf.FlightDetailsDel(TestData.BoingPlane);
+//Console.WriteLine("total flights :"+sf.ProgrammedFlightNumber(new DateTime (2022,02,01)));
+//Console.WriteLine( "Duration Average : "+sf.DurationAverageDel("Paris"));
+//foreach (var item in sf.OrderedDurationFlights())
+//{
+//    Console.WriteLine(item);
+//}
+////foreach( var item in sf.SeniorTravellers(TestData.flight1)) { Console.WriteLine(item); }
+//sf.DestinationGroupedFlights();
+//Passenger passenger1 = new Passenger { FullName = new FullName { FirstName = "test", LastName = "test1" }, EmailAddress = "test@esprit.tn"
+//};
+//Console.WriteLine(passenger1.FullName.FirstName + passenger1.FullName.LastName);
+//passenger1.UpperFullName();
+//Console.WriteLine(passenger1.FullName.FirstName + passenger1.FullName.LastName);
+
+
 AMContext ctx = new AMContext();
-ctx.Flights.Add(TestData.flight1);
+
+ctx.Flights.Add(TestData.flight2);
 ctx.SaveChanges();
-ServiceFlight sf = new ServiceFlight();
-sf.Flights = TestData.listFlights;
-foreach(var flight in sf.GetFlightDates("Paris"))
-{
-    Console.WriteLine(flight);
-}
-sf.GetFlights("Destination", "Paris");
-sf.FlightDetailsDel(TestData.BoingPlane);
-Console.WriteLine("total flights :"+sf.ProgrammedFlightNumber(new DateTime (2022,02,01)));
-Console.WriteLine( "Duration Average : "+sf.DurationAverageDel("Paris"));
-foreach (var item in sf.OrderedDurationFlights())
-{
-    Console.WriteLine(item);
-}
-foreach( var item in sf.SeniorTravellers(TestData.flight1)) { Console.WriteLine(item); }
-sf.DestinationGroupedFlights();
-Passenger passenger1 = new Passenger { FullName = new FullName { FirstName = "test", LastName = "test1" }, EmailAddress = "test@esprit.tn"
-};
-Console.WriteLine(passenger1.FullName.FirstName + passenger1.FullName.LastName);
-passenger1.UpperFullName();
-Console.WriteLine(passenger1.FullName.FirstName + passenger1.FullName.LastName);
+Console.WriteLine(ctx.Flights.First().Plane.Capacity);

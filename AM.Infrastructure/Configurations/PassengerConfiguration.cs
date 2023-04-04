@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AM.Infrastructure.Configurations
 {
-    internal class PassengerConfiguration : IEntityTypeConfiguration<Passenger>
+    public class PassengerConfiguration : IEntityTypeConfiguration<Passenger>
     {
         public void Configure(EntityTypeBuilder<Passenger> builder)
         {
@@ -18,6 +18,10 @@ namespace AM.Infrastructure.Configurations
                 f.Property(x => x.FirstName).HasMaxLength(30).HasColumnName("PassFirstName");
                 f.Property(x => x.LastName).IsRequired().HasColumnName("PassLastName");
             });
+            //builder.HasDiscriminator<string>("IsTraveller")
+            //    .HasValue<Traveller>("1")
+            //    .HasValue<Staff>("2")
+            //    .HasValue<Passenger>("0");
         }
     }
 }

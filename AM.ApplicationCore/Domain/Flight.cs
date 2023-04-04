@@ -20,8 +20,10 @@ namespace AM.ApplicationCore.Domain
         public int EstimatedDuration { get; set; }
         [ForeignKey("Plane")]
         public int PlaneId { get; set; }    
-        public Plane Plane { get; set; }
-        public ICollection<Passenger> Passengers { get; set; }
+        public virtual Plane Plane { get; set; }
+        //public ICollection<Passenger> Passengers { get; set; }
+
+        public virtual ICollection<Ticket> Tickets { get; set; }
         public override string ToString()
         {
             return " Destination : "+this.Destination+" Departure :"+this.Departure+" FlightDate :"+this.FlightDate+"EffectiveArrival :"+this.EffectiveArrival+"estimated duration :"+this.EstimatedDuration;
