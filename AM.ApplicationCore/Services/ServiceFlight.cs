@@ -11,7 +11,15 @@ using System.Threading.Tasks;
 namespace AM.ApplicationCore.Services
 {
     public class ServiceFlight : IServiceFlight
+
     {
+        private readonly IGenericRepository<Flight> _repo;
+        public ServiceFlight(IGenericRepository<Flight> repo)
+        {
+            _repo = repo;
+        }
+     
+
         public List<Flight> Flights { get; set; } = new List<Flight>();
 
         //public List<DateTime> GetFlightDates(string destination)
@@ -193,6 +201,22 @@ namespace AM.ApplicationCore.Services
             }
             return query;
         }
+
+        public void Add(Flight flight)
+        {
+            _repo.Add(flight);
+        }
+
+        public void Remove(Flight flight)
+        {
+            _repo.Delete(flight);
+        }
+
+        public IList<Flight> GetAll()
+        {
+            return (IList<Flight>)_repo.GetAll();
+        }
+
         public Action<Plane> FlightDetailsDel;
         public Func<string, double> DurationAverageDel;
         public ServiceFlight()
