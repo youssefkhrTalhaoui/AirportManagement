@@ -3,33 +3,43 @@ using AM.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    public class ServicePlane : IServicePlane
+    public class ServicePlane : Service<Plane>, IServicePlane
     {
-     
-        private readonly IGenericRepository<Plane> _repo;
-        public ServicePlane(IGenericRepository<Plane> repo)
+
+        public ServicePlane(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            _repo = repo;
+
         }
 
-        public void Add(Plane plane)
+        public void DeletePlanes()
         {
-           _repo.Add(plane);
+            Delete(p => p.ManufactureDate.AddYears(10).Year > DateTime.Now.Year);
         }
 
-        public IList<Plane> GetAll()
+        public IList<Flight> GetFlights(int n)
         {
-            return (IList<Plane>)_repo.GetAll();
+            return GetAll().OrderByDescending(p => p.PlaneId).Take(n).SelectMany(p => p.Flights).OrderBy(f => f.FlightDate).ToList();
+
         }
 
-        public void Remove(Plane plane)
+        public IList<Plane> GetPassenger(Plane plane)
         {
-           _repo.Remove(plane);
+            return (IList<Plane>)GetById(plane.PlaneId).Flights.SelectMany(f => f.Tickets.Select(t => t.Passenger)).ToList();
+        }
+
+        public bool isAvailable(Flight flight, int n)
+        {
+            int PlaneCapacity = flight.Plane.Capacity;
+
+            int nbrTicket = flight.Tickets.Count;
+            return PlaneCapacity > nbrTicket;
         }
     }
 }
+

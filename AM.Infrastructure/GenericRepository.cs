@@ -13,6 +13,9 @@ namespace AM.Infrastructure
     {
         private readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
+
+        public object Planes => throw new NotImplementedException();
+
         //private readonly IUnitOfWork _unitOfWork;
 
         public GenericRepository(DbContext context)
@@ -63,6 +66,11 @@ namespace AM.Infrastructure
         public void Update(TEntity entity)
         {
             _dbSet.Update(entity);
+        }
+
+        public void Delete(TEntity entity)
+        {
+            throw new NotImplementedException();
         }
 
         //public void SubmitChanges()

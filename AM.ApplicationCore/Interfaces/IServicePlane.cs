@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Interfaces
 {
-    internal interface IServicePlane
+    public interface IServicePlane : IService<Plane>
     {
         public void Add(Plane plane);
         public void Remove(Plane plane);

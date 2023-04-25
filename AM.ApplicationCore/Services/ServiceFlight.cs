@@ -4,21 +4,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    public class ServiceFlight : IServiceFlight
+    public class ServiceFlight : Service<Flight> ,IServiceFlight
 
     {
-        private readonly IGenericRepository<Flight> _repo;
-        public ServiceFlight(IGenericRepository<Flight> repo)
+        private IUnitOfWork unitOfWork;
+        public ServiceFlight(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            _repo = repo;
+            this.unitOfWork = unitOfWork;
         }
-     
+
 
         public List<Flight> Flights { get; set; } = new List<Flight>();
 
@@ -202,19 +203,57 @@ namespace AM.ApplicationCore.Services
             return query;
         }
 
-        public void Add(Flight flight)
+        public void Add(Flight f)
         {
-            _repo.Add(flight);
+            unitOfWork.Repository<Flight>().Add(f);
         }
-
-        public void Remove(Flight flight)
+        public void Remove(Flight f)
         {
-            _repo.Delete(flight);
+            unitOfWork.Repository<Flight>().Delete(f);
         }
-
         public IList<Flight> GetAll()
         {
-            return (IList<Flight>)_repo.GetAll();
+            return unitOfWork.Repository<Flight>().GetAll().ToList();
+        }
+
+        public void Update(Flight entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Flight entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(Expression<Func<Flight, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Flight GetById(params object[] id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<Flight> IService<Flight>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Flight> GetMany(Expression<Func<Flight, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Flight Get(Expression<Func<Flight, bool>> where)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Commit()
+        {
+            throw new NotImplementedException();
         }
 
         public Action<Plane> FlightDetailsDel;
