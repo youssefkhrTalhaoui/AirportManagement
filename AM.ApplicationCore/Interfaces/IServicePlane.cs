@@ -9,8 +9,13 @@ namespace AM.ApplicationCore.Interfaces
 {
     public interface IServicePlane : IService<Plane>
     {
-        public void Add(Plane plane);
-        public void Remove(Plane plane);
-        public IList<Plane> GetAll();
+        public IList<Plane> GetPassenger(Plane plane);
+
+
+        public IList<Flight> GetFlights(int n);
+
+        public bool isAvailable(Flight flight, int n);
+
+        public void DeletePlanes();
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Interfaces
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        int Save();
+        IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class;
     }
+
 }

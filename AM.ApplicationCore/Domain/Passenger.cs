@@ -13,10 +13,9 @@ namespace AM.ApplicationCore.Domain
         [DataType(DataType.DateTime)]
         public DateTime BirthDate { get; set; }
         [Key, StringLength(7)]
-        
         public string PassportNumber { get; set; }
         [EmailAddress]
-         //[DataType(DataType.EmailAddress)]
+         //OU BIEN [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
         public FullName FullName { get; set; }    
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Invalid Phone Number!")]
@@ -28,7 +27,7 @@ namespace AM.ApplicationCore.Domain
         {
             return "BirthDate :"+this.BirthDate+"PassportNumber :"+this.PassportNumber+"EmailAdresss :"+this.EmailAddress+"FirstName :"+this.FullName.FirstName+"LastName :"+this.FullName.LastName + "TelNumber :"+this.TelNumber;
         }
-        //la propriété et un attribut encapsulé avec les getters et setters....
+        //la propriété est un attribut encapsulé avec les getters et setters....
 
         /* public bool CheckProfile(string firstname,string lastname)
          {

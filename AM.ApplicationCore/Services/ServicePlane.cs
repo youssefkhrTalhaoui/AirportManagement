@@ -24,7 +24,8 @@ namespace AM.ApplicationCore.Services
 
         public IList<Flight> GetFlights(int n)
         {
-            return GetAll().OrderByDescending(p => p.PlaneId).Take(n).SelectMany(p => p.Flights).OrderBy(f => f.FlightDate).ToList();
+          
+            return GetAll().OrderByDescending(p=>p.PlaneId).Take(n).SelectMany(p =>p.Flights).OrderBy(f =>f.FlightDate).ToList();
 
         }
 

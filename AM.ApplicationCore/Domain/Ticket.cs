@@ -19,4 +19,4 @@ namespace AM.ApplicationCore.Domain
 
 
     }
-}
+}   
